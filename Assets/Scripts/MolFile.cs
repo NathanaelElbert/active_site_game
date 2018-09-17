@@ -106,7 +106,7 @@ public class MolFile
             atomDetail.atomSymbol = result.Groups["Symbol"].Value.Trim();
             atomDetail.position = new Vector3(Convert.ToSingle(result.Groups["x"].Value),
                                               Convert.ToSingle(result.Groups["y"].Value),
-                                              Convert.ToSingle(result.Groups["z"].Value));
+                                              ( Convert.ToSingle(result.Groups["z"].Value) - (Convert.ToSingle(result.Groups["z"].Value) % 5)) );
             atomDetail.charge = Convert.ToInt32(result.Groups["Charge"].Value);
             _atomDetailList.Add(atomDetail);
         }

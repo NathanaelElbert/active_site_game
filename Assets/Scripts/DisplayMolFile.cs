@@ -16,23 +16,23 @@ public static class DisplayAtoms
 
         foreach (AtomDetail atom in atomDetail)
         {
-            dispAtom = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            dispAtom = GameObject.CreatePrimitive(PrimitiveType.Cube);
             dispAtom.name = atom.atomSymbol + " " + (++count);
             dispAtom.transform.parent = parent;
 
             //Rigidbody rb = dispAtom.AddComponent<Rigidbody>();
             //rb.AddForce(Random.insideUnitCircle * 3, ForceMode.VelocityChange);
 
-            SphereCollider coll = dispAtom.GetComponent<SphereCollider>();
+            BoxCollider coll = dispAtom.GetComponent<BoxCollider>();
             coll.isTrigger = true;
-            coll.radius *= 2; 
+            coll.size *= 2; 
 
             dispAtom.transform.localPosition = atom.position;
 
             if (atom.atomSymbol == "H")
-                dispAtom.transform.localScale = Vector3.one * 0.5f;
+                dispAtom.transform.localScale = Vector3.one * .5f;
             else
-                dispAtom.transform.localScale = Vector3.one * 0.75f;
+                dispAtom.transform.localScale = Vector3.one * .75f;
 
 
             Renderer rend = dispAtom.GetComponent<Renderer>();
@@ -42,9 +42,9 @@ public static class DisplayAtoms
             // Get the sum of all the Positions of the atoms
             centerPoint += dispAtom.transform.localPosition;
             
-            if (atom.bond != null)
-                foreach (int bond in atom.bond)
-                    CreateBond(atom.position, atomDetail[bond].position, parent, 0.25f);
+            //if (atom.bond != null)
+               // foreach (int bond in atom.bond)
+                   // CreateBond(atom.position, atomDetail[bond].position, parent, 0.25f);
         }
 
         if (count > 0)
@@ -54,32 +54,32 @@ public static class DisplayAtoms
         parent.transform.localPosition -= centerPoint;
     }
 
-    static void CreateBond(Vector3 start, Vector3 end, Transform parent, float thickness = 0.33f)
-    {
-        GameObject dispBond = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-        GameObject bondHolder = new GameObject();
-        GameObject tempPos = new GameObject();
+    //static void CreateBond(Vector3 start, Vector3 end, Transform parent, float thickness = 0.33f)
+    //{
+       // GameObject dispBond = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+       // GameObject bondHolder = new GameObject();
+       // GameObject tempPos = new GameObject();
 
-        bondHolder.name = "Bond";
-        bondHolder.transform.parent = parent;
-        dispBond.transform.parent = bondHolder.transform;
-        tempPos.transform.parent = parent;
+        //bondHolder.name = "Bond";
+       // bondHolder.transform.parent = parent;
+       // dispBond.transform.parent = bondHolder.transform;
+       // tempPos.transform.parent = parent;
 
-        dispBond.transform.Rotate(Vector3.right, 90f);
-        dispBond.transform.localScale = new Vector3(thickness,  // TODO: Make this a user option
-                                                    0.5f,
-                                                    thickness);
+       // dispBond.transform.Rotate(Vector3.right, 90f);
+       // dispBond.transform.localScale = new Vector3(thickness,  // TODO: Make this a user option
+                                             //       0.5f,
+                                             //       thickness);
 
-        dispBond.transform.localPosition = new Vector3(0f, 0f, dispBond.transform.localScale.y);
+      //  dispBond.transform.localPosition = new Vector3(0f, 0f, dispBond.transform.localScale.y);
 
-        bondHolder.transform.localPosition = start;
-        tempPos.transform.localPosition = end;
+      //  bondHolder.transform.localPosition = start;
+      //  tempPos.transform.localPosition = end;
 
-        bondHolder.transform.localScale = new Vector3(1f, 1f, Vector3.Distance(start, end));
+       // bondHolder.transform.localScale = new Vector3(1f, 1f, Vector3.Distance(start, end));
 
-        bondHolder.transform.LookAt(tempPos.transform);
-        ScriptableObject.Destroy(tempPos);
-    }
+       // bondHolder.transform.LookAt(tempPos.transform);
+      //  ScriptableObject.Destroy(tempPos);
+    //}
 
     static Color GetAtomColor(string symbol)
     {
