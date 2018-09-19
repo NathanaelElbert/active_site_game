@@ -19,7 +19,7 @@ public class MolFile
     {
         ReadFile(fullFilePath);
     }
-    
+
     public MolFile(FileManager.MetaFile file)
     {
         ReadTextAsset(file.MolData);
@@ -52,7 +52,7 @@ public class MolFile
             throw new FileNotFoundException(fullFilePath);
         }
     }
-    
+
     void ParseFile()
     {
         Init();
@@ -83,7 +83,7 @@ public class MolFile
 
         return result;
     }
-    
+
     void ParseHeader()
     {
         string header_pattern = @"^(?<Atoms>[0-9 ]{3})(?<Bonds>[0-9 ]{3})(?<AtomList>[0-9 ]{3})(?:[0-9 ]{3})(?<ChiralFlag>[0-9 ]{3})(?<NumOfStext>[0-9 ]{3})(?:[0-9 ]{3}){4}(?<AddProp>[0-9 ]{3}) (?<Version>[0-9V ]{5})$";
@@ -99,18 +99,22 @@ public class MolFile
     {
         string atom_pattern = @"^(?<x>[0-9 .-]{10})(?<y>[0-9 .-]{10})(?<z>[0-9 .-]{10}) (?<Symbol>[A-z* ]{3})(?<MassDiff>[0-9 -]{2})(?<Charge>[0-9 ]{3})(?:[0-9 .-]{3}){10}$";
 
-        for ( int i = 0; i < _numOfAtoms; i++)
+        for (int i = 0; i < _numOfAtoms; i++)
         {
             Match result = GetMatch(atom_pattern);
             AtomDetail atomDetail = new AtomDetail();
             atomDetail.atomSymbol = result.Groups["Symbol"].Value.Trim();
-            atomDetail.position = new Vector3(Convert.ToSingle(result.Groups["x"].Value),
-                                              Convert.ToSingle(result.Groups["y"].Value),
-                                              ( Convert.ToSingle(result.Groups["z"].Value) - (Convert.ToSingle(result.Groups["z"].Value) % 5)) );
-            atomDetail.charge = Convert.ToInt32(result.Groups["Charge"].Value);
-            _atomDetailList.Add(atomDetail);
+            atomDetail.position = new Vector3((Convert.ToSingle(result.Groups["x"].Value) - (Convert.ToSingle(result.Groups["x"].Value) % 3)) + 5,
+                                              (Convert.ToSingle(result.Groups["y"].Value) - (Convert.ToSingle(result.Groups["y"].Value) % 3)) + 5,
+                                              (Convert.ToSingle(result.Groups["z"].Value) - (Convert.ToSingle(result.Groups["z"].Value) % 3)) + 5);
+        atomDetail.charge = Convert.ToInt32(result.Groups["Charge"].Value);
+        _atomDetailList.Add(atomDetail);
         }
     }
+
+
+    
+    
 
     void ParseBonds()
     {

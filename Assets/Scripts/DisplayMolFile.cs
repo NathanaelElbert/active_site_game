@@ -30,9 +30,9 @@ public static class DisplayAtoms
             dispAtom.transform.localPosition = atom.position;
 
             if (atom.atomSymbol == "H")
-                dispAtom.transform.localScale = Vector3.one * .5f;
+                dispAtom.transform.localScale = Vector3.one * 1f;
             else
-                dispAtom.transform.localScale = Vector3.one * .75f;
+                dispAtom.transform.localScale = Vector3.one * 3f;
 
 
             Renderer rend = dispAtom.GetComponent<Renderer>();
