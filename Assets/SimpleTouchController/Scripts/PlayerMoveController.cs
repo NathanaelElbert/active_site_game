@@ -5,21 +5,32 @@ using System.Collections;
 
 public class PlayerMoveController : MonoBehaviour {
 
-	// PUBLIC
-	public SimpleTouchController leftController;
+
+    [SerializeField] Transform rotateParent = null;
+
+
+    // PUBLIC
+    public SimpleTouchController leftController;
 	public SimpleTouchController rightController;
 	public Transform headTrans;
 	public float speedMovements = 5f;
 	public float speedContinuousLook = 100f;
-	public float speedProgressiveLook = 3000f;
+	public float speedProgressiveLook = 10000f;
+    public static bool go;
 
 	// PRIVATE
 	private Rigidbody _rigidbody;
 	[SerializeField] bool continuousRightController = true;
 
-	void Awake()
+    Transform objectToRotate;
+
+    void Awake()
 	{
-		_rigidbody = GetComponent<Rigidbody>();
+
+        go.Equals(false);
+
+        objectToRotate = (rotateParent == null) ? transform : rotateParent;
+        _rigidbody = GetComponent<Rigidbody>();
 		rightController.TouchEvent += RightController_TouchEvent;
 	}
 
@@ -38,8 +49,11 @@ public class PlayerMoveController : MonoBehaviour {
 
 	void Update()
 	{
-		// move
-		_rigidbody.MovePosition(transform.position + (transform.forward * leftController.GetTouchPosition.y * Time.deltaTime * speedMovements) +
+
+
+        // move
+
+        _rigidbody.MovePosition(transform.position + (transform.forward * leftController.GetTouchPosition.y * Time.deltaTime * speedMovements) +
 			(transform.right * leftController.GetTouchPosition.x * Time.deltaTime * speedMovements) );
 
 		if(continuousRightController)
@@ -52,26 +66,27 @@ public class PlayerMoveController : MonoBehaviour {
 	{
 		if(headTrans != null)
 		{
-			Quaternion rot = Quaternion.Euler(0f,
+            objectToRotate.rotation = Quaternion.Euler(0f,
 				transform.localEulerAngles.y - value.x * Time.deltaTime * -speedProgressiveLook,
 				0f);
 
-			_rigidbody.MoveRotation(rot);
 
-			rot = Quaternion.Euler(headTrans.localEulerAngles.x - value.y * Time.deltaTime * speedProgressiveLook,
+            objectToRotate.rotation = Quaternion.Euler(transform.localEulerAngles.x - value.y * Time.deltaTime * speedProgressiveLook,
 				0f,
 				0f);
-			headTrans.localRotation = rot;
 
-		}
+
+            go.Equals(true);
+            
+        }
 		else
 		{
 
-			Quaternion rot = Quaternion.Euler(transform.localEulerAngles.x - value.y * Time.deltaTime * speedProgressiveLook,
+			objectToRotate.rotation = Quaternion.Euler(transform.localEulerAngles.x - value.y * Time.deltaTime * speedProgressiveLook,
 				transform.localEulerAngles.y + value.x * Time.deltaTime * speedProgressiveLook,
 				0f);
 
-			_rigidbody.MoveRotation(rot);
+			
 		}
 	}
 

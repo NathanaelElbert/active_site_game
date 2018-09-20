@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,18 +10,17 @@ public class Rotator : MonoBehaviour
     [SerializeField] float autoRotateSpeed = 0.5f;
     [SerializeField] float maxRotation = 10f;
 
-    private bool mouseOn;
+    private bool goOn;
     private bool rotate;
 
-    private Vector3 targetDir;
-    private Quaternion offset;
+   
 
     Transform objectToRotate;
 
     void Start()
     {
         objectToRotate = (rotateParent == null) ? transform : rotateParent;
-        mouseOn.Equals(false);
+        goOn.Equals(false);
         rotate.Equals(autoRotate);
     }
 
@@ -30,12 +29,12 @@ public class Rotator : MonoBehaviour
         
 
 
-        if (mouseOn.Equals(true))
+        if (goOn.Equals(true))
         {
             rotate = false;
         }
 
-        if (mouseOn.Equals(false) && autoRotate.Equals(true))
+        if (goOn.Equals(false) && autoRotate.Equals(true))
         {
             rotate = true;
         }
@@ -44,25 +43,23 @@ public class Rotator : MonoBehaviour
 
         if (rotate.Equals(true))
         {
-            offset = Quaternion.FromToRotation(transform.up, targetDir);
             objectToRotate.rotation = Quaternion.Euler(0f, maxRotation * Mathf.Sin(Time.time * autoRotateSpeed), 0f);
             
         }
+
+
+        if (PlayerMoveController.go.Equals(true))
+        {
+            goOn = true;
+        }
+
+
+       
+
+
+
     }
 
-    void OnMouseDrag()
-    {
-
-        mouseOn = true;
-        Vector2 mouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        //Vector2 mouseDeltaSpeed = new Vector2(Input.acceleration.x * mouseDelta.x, Input.acceleration.y * mouseDelta.y);
-
-        
-
-        objectToRotate.rotation = Quaternion.Euler(mouseDelta.y * mouseDelta.magnitude, -mouseDelta.x * mouseDelta.magnitude, 0) * transform.rotation;
-    }
-    private void OnMouseUp()
-    {
-        mouseOn = false;
-    }
+   
+    
 }

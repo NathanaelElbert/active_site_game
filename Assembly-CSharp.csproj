@@ -135,16 +135,16 @@
     <None Include="Assets\Resources\UserPiece\C27H32F2N8_Abemaciclib.txt" />
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/w1651754/Desktop/Activesite/active_site_game/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/w1651754/Desktop/Active Site/active_site_game/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/w1651754/Desktop/Activesite/active_site_game/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/w1651754/Desktop/Active Site/active_site_game/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/w1651754/Desktop/Activesite/active_site_game/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/w1651754/Desktop/Active Site/active_site_game/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/w1651754/Desktop/Activesite/active_site_game/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/w1651754/Desktop/Active Site/active_site_game/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
