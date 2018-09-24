@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "active_site_game", "Assembly-CSharp.csproj", "{A245606A-E941-0EDB-37CB-3E00E8B55CDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{A245606A-E941-0EDB-37CB-3E00E8B55CDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "active_site_game", "Assembly-CSharp-Editor.csproj", "{CD5B650E-1768-10C7-2CFC-F8BF4A757934}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{CD5B650E-1768-10C7-2CFC-F8BF4A757934}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
