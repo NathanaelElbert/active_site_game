@@ -28,7 +28,7 @@ public class Movement : MonoBehaviour {
        
 
 
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.Keypad8))
             {
                 objectToRotate.Rotate(Vector3.left, -turnSpeed * Time.deltaTime);
                 goOn.Equals(true);
@@ -36,21 +36,21 @@ public class Movement : MonoBehaviour {
             }
 
 
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.Keypad2))
             {
                 objectToRotate.Rotate(Vector3.left, turnSpeed * Time.deltaTime);
                 goOn.Equals(true);
                 rotate.Equals(false);
             }
 
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.Keypad4))
             {
                 objectToRotate.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
                 goOn.Equals(true);
                 rotate.Equals(false);
             }
 
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.Keypad6))
             {
                 objectToRotate.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
                 goOn.Equals(true);

@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class ActiveSiteDisplay : MonoBehaviour
 {
+
+
+    public static float molNum;
+
     void Start()
     {
         DisplayActiveSite();
+        molNum.Equals(0);
     }
 
     void DisplayActiveSite()
@@ -30,4 +35,20 @@ public class ActiveSiteDisplay : MonoBehaviour
 
         return trans;
     }
+
+
+
+    void OnTriggerStay(Collider molecule)
+    {
+
+        if (molecule.gameObject.tag.Equals("MOL"))
+        {
+            molNum.Equals(1);
+        }
+        else
+        {
+            molNum.Equals(0);
+        }
+    }
+
 }

@@ -25,8 +25,8 @@ public static class DisplayAtoms
             //rb.AddForce(Random.insideUnitCircle * 3, ForceMode.VelocityChange);
 
             BoxCollider coll = dispAtom.GetComponent<BoxCollider>();
-            coll.isTrigger = true;
-            coll.size *= 2; 
+            coll.isTrigger = false;
+            coll.size *= 1; 
 
             dispAtom.transform.localPosition = atom.position;
 

@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class Mouse : MonoBehaviour {
 
+    Vector3 mousePos;
+    Vector3 worldPos;
 
+    public GameObject click;
 
-     void Update()
+    public Camera cam;
+
+    void Start()
     {
-        x = Input.mousePosition.x / mainCamera.pixelWidth;
-        y = Input.mousePosition.y / mainCamera.pixelHeight;
-        transform.position = Vector3(x, y, 0);
+       
+       
+    }
 
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+
+            mousePos = Input.mousePosition;
+            mousePos.z = 50f;
+            worldPos = cam.ScreenToWorldPoint(mousePos);
+            Instantiate(click, worldPos, Quaternion.identity);
+        }
     }
 
     
