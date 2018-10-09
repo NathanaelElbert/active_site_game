@@ -44,7 +44,7 @@ public class MoveMol : MonoBehaviour {
 
         }
 
-        if (Input.GetKey(KeyCode.Y))
+        if (Input.GetKey(KeyCode.C))
         {
             var y = Time.deltaTime * moveSpeed;
 
