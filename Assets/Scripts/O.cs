@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,7 +31,7 @@ public class O : MonoBehaviour {
         {
             newmol = Instantiate(mol, worldPos, Quaternion.identity, istParent);
 
-            Instan.GetComponent<C>().enabled = false;
+            Instan.GetComponent<O>().enabled = false;
             ist.Equals(true);
         }
     }
