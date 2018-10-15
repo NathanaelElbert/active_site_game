@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\AtomDetail.cs" />
     <Compile Include="Assets\Scripts\C.cs" />
     <Compile Include="Assets\Scripts\ChangeColor.cs" />
+    <Compile Include="Assets\Scripts\ClickTeleport.cs" />
     <Compile Include="Assets\Scripts\DisplayMolFile.cs" />
     <Compile Include="Assets\Scripts\Dolley.cs" />
     <Compile Include="Assets\Scripts\DragMe.cs" />
